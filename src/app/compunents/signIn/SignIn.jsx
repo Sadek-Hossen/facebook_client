@@ -6,13 +6,10 @@ import { useRouter } from "next/navigation";
 import axios from "axios";
 
 export default function SignIn() {
-  
-  
   const router = useRouter();
-   const BACKEND_URL = process.env.NEXT_PUBLIC_BACKEND_URL; // backend url
-  
-  //console.log(BACKEND_URL)
-   const [formData, setFormData] = useState({
+  const BACKEND_URL = process.env.NEXT_PUBLIC_BACKEND_URL;
+
+  const [formData, setFormData] = useState({
     name: "",
     email: "",
     password: "",
@@ -39,25 +36,33 @@ export default function SignIn() {
       setError("All fields are required");
       return;
     }
-  
+
     try {
       const response = await axios.post(
         `${BACKEND_URL}/api/user/userCreate`,
-        formData
+        formData,
+        {
+          headers: {
+            "Content-Type": "application/json", // Backend JSON parse 
+          },
+        }
       );
-      console.log(response)
+
+      console.log(response);
 
       if (response.status === 201) {
         setSuccess("Sign up successful!");
         setFormData({ name: "", email: "", password: "" });
-        alert("😀 user create successfully")
+        alert("😀 User created successfully");
         setTimeout(() => {
           router.push("/");
         }, 1000);
       }
     } catch (err) {
-      console.error(err);
-      setError("Sign up failed");
+      console.error(err.response?.data || err.message);
+      setError(
+        err.response?.data?.message || err.message || "Sign up failed"
+      );
     }
   };
 
