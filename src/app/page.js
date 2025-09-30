@@ -1,5 +1,6 @@
 import Image from "next/image";
-import Index from "./compunents/main/Index";
+import Index from "./compunents/mainContent/Index";
+
 
 export default function Home() {
   return (
