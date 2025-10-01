@@ -18,9 +18,9 @@ function Header() {
   const isActive = (path) => pathname === path;
 
   return (
-    <header className="p-4 shadow">
+    <header className="p-4  fixed w-full bg-white  shadow-2xl">
       {/* Mobile header */}
-      <div className="flex justify-between items-center lg:hidden">
+      <div className="flex  justify-between items-center lg:hidden">
         <h1 className="font-bold text-[#0866FF]">Facebook</h1>
         <div className="flex gap-4">
           <SearchIcon />

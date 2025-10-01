@@ -6,7 +6,7 @@ import React from 'react'
 
 function Index() {
   return (
-    <div className='grid lg:grid-cols-3 px-2'>
+    <div className='grid lg:grid-cols-3  px-4 bg-gray-200 pb-30'>
     <Leftpage />
     <UploadPage />
     <RightPage />
