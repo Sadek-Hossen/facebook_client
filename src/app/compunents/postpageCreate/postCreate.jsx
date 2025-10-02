@@ -51,7 +51,7 @@ function PostCreate() {
       setSelectedFile(null);
       router.push("/");
     } catch (error) {
-      console.error("❌ error uploading post", error);
+      console.error(" error uploading post", error);
       alert("Post failed! Check console for error.");
     } finally {
       setUploadeing(false);

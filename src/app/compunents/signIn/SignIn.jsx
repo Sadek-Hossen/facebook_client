@@ -4,6 +4,8 @@ import { useState } from "react";
 import GoogleIcon from "@mui/icons-material/Google";
 import { useRouter } from "next/navigation";
 import axios from "axios";
+import ArrowBackIcon from '@mui/icons-material/ArrowBack';
+import Link from "next/link";
 
 export default function SignIn() {
   const router = useRouter();
@@ -72,7 +74,15 @@ export default function SignIn() {
         onSubmit={handleSubmit}
         className="bg-white p-8 rounded-lg shadow-md w-full max-w-sm"
       >
-        <h2 className="text-2xl font-bold text-center mb-6">Sign Up</h2>
+        <div className="flex justify-center items-center w-[50%] mx-auto mb-10"><img src="img/facebook.png" alt="facebook" className="rounded-full w-[50%]" /></div>
+        <div className="flex ">
+          <Link href="/" >
+            <h2 className="text-2xl font-bold mb-6 hover:bg-gray-500 p-2 cursor-pointer rounded-2xl transition-all"><ArrowBackIcon /></h2>
+          
+          </Link>
+          <h2 className="text-2xl font-bold text-center mx-auto mb-6">Sign Up</h2>
+        
+        </div>
 
         {error && <p className="text-red-500 mb-4">{error}</p>}
         {success && <p className="text-green-500 mb-4">{success}</p>}
