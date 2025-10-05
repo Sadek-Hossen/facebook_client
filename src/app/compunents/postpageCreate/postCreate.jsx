@@ -11,12 +11,12 @@ function PostCreate() {
   const [uloading, setUploadeing] = useState(false);
   const [text, setText] = useState("");
   const [selectedFile, setSelectedFile] = useState(null);
+  const [previewUrl, setPreviewUrl] = useState(null); // ✅ preview url
   const fileInputRef = useRef(null);
 
   const router = useRouter();
-  const BACKEND_URL=process.env.NEXT_PUBLIC_BACKEND_URL || "http://localhost:5000";
+  const BACKEND_URL = process.env.NEXT_PUBLIC_BACKEND_URL || "http://localhost:5000";
 
-  // Image + text send to backend
   const handlePost = async () => {
     if (!text && !selectedFile) return;
 
@@ -24,7 +24,6 @@ function PostCreate() {
     try {
       let imageUrl = "";
 
-      // if image selected → upload to imgbb
       if (selectedFile) {
         const formData = new FormData();
         formData.append("image", selectedFile);
@@ -37,21 +36,20 @@ function PostCreate() {
         imageUrl = res?.data?.data?.display_url;
       }
 
-      // prepare post data
       const postData = {
         title: text,
         image: imageUrl,
       };
 
-      // send to backend
       await axios.post(`${BACKEND_URL}/api/post/postCreate`, postData);
 
       alert("✅ Post Created Successfully!");
       setText("");
       setSelectedFile(null);
+      setPreviewUrl(null); // ✅ clear preview
       router.push("/");
     } catch (error) {
-      console.error(" error uploading post", error);
+      console.error("Error uploading post:", error);
       alert("Post failed! Check console for error.");
     } finally {
       setUploadeing(false);
@@ -59,14 +57,14 @@ function PostCreate() {
   };
 
   const handleImageClick = () => {
-    fileInputRef.current.click(); // open file picker
+    fileInputRef.current.click();
   };
 
   const handleFileChange = (e) => {
     const file = e.target.files[0];
     if (file) {
       setSelectedFile(file);
-      console.log("Selected file:", file);
+      setPreviewUrl(URL.createObjectURL(file)); // ✅ set preview
     }
   };
 
@@ -107,11 +105,10 @@ function PostCreate() {
           ></textarea>
         </div>
 
-        {selectedFile && (
+        {/* Image Preview */}
+        {previewUrl && (
           <div className="px-4 py-2">
-            <p className="text-sm text-gray-600">
-              Selected file: {selectedFile.name}
-            </p>
+            <img src={previewUrl} alt="preview" className="w-full h-auto rounded" />
           </div>
         )}
 
@@ -120,14 +117,12 @@ function PostCreate() {
           <div className="flex justify-between items-center border rounded-lg px-3 py-2">
             <p className="text-gray-600 text-sm">Add to your post</p>
             <div className="flex space-x-3 text-xl text-gray-500">
-              {/* Hidden file input */}
               <input
                 type="file"
                 ref={fileInputRef}
                 onChange={handleFileChange}
                 style={{ display: "none" }}
               />
-              {/* Icons */}
               <BsFillImageFill
                 className="text-green-500 cursor-pointer"
                 onClick={handleImageClick}
