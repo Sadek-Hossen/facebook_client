@@ -1,4 +1,4 @@
-import PostPage from '@/app/(postPage)/postpage/page'
+// import PostPage from '@/app/(postPage)/postpage/page'
 import Posts from '@/app/compunents/allPosts/posts'
 import Post from '@/app/compunents/createPost/post'
 import PostCreate from '@/app/compunents/postpageCreate/postCreate'

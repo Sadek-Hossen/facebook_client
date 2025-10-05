@@ -1,3 +1,4 @@
+"use client"
 import SignIn from '@/app/compunents/signIn/SignIn'
 import React from 'react'
 

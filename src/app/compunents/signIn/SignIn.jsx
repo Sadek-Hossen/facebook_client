@@ -6,6 +6,8 @@ import { useRouter } from "next/navigation";
 import axios from "axios";
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import Link from "next/link";
+import { signInWithPopup } from "firebase/auth";
+import { auth, provider } from "@/app/firebase/firebase";
 
 export default function SignIn() {
   const router = useRouter();
@@ -68,6 +70,21 @@ export default function SignIn() {
     }
   };
 
+// google sign in 
+
+const handleGoogleSignIn = ()=> {
+  signInWithPopup(auth,provider)
+  .then((result) =>{
+    console.log(result);
+    alert("google sign in successfully")
+  })
+   .catch((error)=>{
+    console.error(error);
+    alert("Google sign in failed");
+
+  });
+}
+
   return (
     <div className="flex justify-center items-center min-h-screen bg-gray-100">
       <form
@@ -121,11 +138,11 @@ export default function SignIn() {
           Sign Up
         </button>
 
-        <button
+        <button  onClick={() => handleGoogleSignIn()}
           type="button"
           className="w-full hover:opacity-70 transition-all cursor-pointer flex items-center gap-2 justify-center p-3 bg-blue-500 text-white rounded"
         >
-          <GoogleIcon /> Sign Up with Google
+          <GoogleIcon  /> Sign Up with Google
         </button>
       </form>
     </div>

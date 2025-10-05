@@ -1,6 +1,7 @@
 "use client"
 import axios from 'axios';
 import React, { useEffect, useState } from 'react'
+import PostStyle from '../stylePost/PostStyle';
 
 function Posts() {
     const [post,setPost] =useState([])
@@ -24,7 +25,8 @@ function Posts() {
        <h1 className="text-center py-6 text-2xl font-bold">
         Here our All products
       </h1>
-       
+
+      
 
       <div className="container mx-auto grid grid-cols-1 px-4 md:grid-cols-3 lg:grid-cols-4 gap-6">
         {post?.map((p) => (
