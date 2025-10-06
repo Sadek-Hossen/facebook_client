@@ -4,14 +4,15 @@ import { useState } from "react";
 import GoogleIcon from "@mui/icons-material/Google";
 import { useRouter } from "next/navigation";
 import axios from "axios";
-import ArrowBackIcon from '@mui/icons-material/ArrowBack';
+import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import Link from "next/link";
 import { signInWithPopup } from "firebase/auth";
 import { auth, provider } from "@/app/firebase/firebase";
 
 export default function SignIn() {
   const router = useRouter();
-  const BACKEND_URL = process.env.NEXT_PUBLIC_BACKEND_URL ||  "http://localhost:5000";
+  const BACKEND_URL =
+    process.env.NEXT_PUBLIC_BACKEND_URL || "http://localhost:5000";
 
   const [formData, setFormData] = useState({
     name: "",
@@ -47,12 +48,10 @@ export default function SignIn() {
         formData,
         {
           headers: {
-            "Content-Type": "application/json", // Backend JSON parse 
+            "Content-Type": "application/json",
           },
         }
       );
-
-      console.log(response);
 
       if (response.status === 201) {
         setSuccess("Sign up successful!");
@@ -70,35 +69,45 @@ export default function SignIn() {
     }
   };
 
-// google sign in 
-
-const handleGoogleSignIn = ()=> {
-  signInWithPopup(auth,provider)
-  .then((result) =>{
-    console.log(result);
-    alert("google sign in successfully")
-  })
-   .catch((error)=>{
-    console.error(error);
-    alert("Google sign in failed");
-
-  });
-}
+  // Google sign in
+  const handleGoogleSignIn = () => {
+    signInWithPopup(auth, provider)
+      .then((result) => {
+        console.log(result);
+        alert("Google sign in successfully");
+      })
+      .catch((error) => {
+        console.error(error);
+        alert("Google sign in failed");
+      });
+  };
 
   return (
-    <div className="flex justify-center items-center min-h-screen bg-gray-100">
+    <div className="flex justify-center items-center min-h-screen 
+      bg-gradient-to-r from-purple-500 via-pink-500 to-green-500 animate-gradient-x">
+      
       <form
         onSubmit={handleSubmit}
-        className="bg-white p-8 rounded-lg shadow-md w-full max-w-sm"
+        className="bg-white/20 backdrop-blur-md p-8 rounded-2xl 
+        shadow-2xl w-full max-w-sm border border-white/30 
+        transition-all duration-500 hover:scale-105"
       >
-        <div className="flex justify-center items-center w-[50%] mx-auto mb-10"><img src="img/facebook.png" alt="facebook" className="rounded-full w-[50%]" /></div>
-        <div className="flex ">
-          <Link href="/" >
-            <h2 className="text-2xl font-bold mb-6 hover:bg-gray-500 p-2 cursor-pointer rounded-2xl transition-all"><ArrowBackIcon /></h2>
-          
+        <div className="flex justify-center items-center w-[50%] mx-auto mb-10">
+          <img
+            src="/img/facebook.png"
+            alt="facebook"
+            className="rounded-full w-[50%]"
+          />
+        </div>
+
+        <div className="flex items-center mb-6">
+          <Link href="/">
+            <h2 className="text-2xl font-bold hover:bg-gray-500/40 p-2 
+            cursor-pointer rounded-2xl transition-all">
+              <ArrowBackIcon />
+            </h2>
           </Link>
-          <h2 className="text-2xl font-bold text-center mx-auto mb-6">Sign Up</h2>
-        
+          <h2 className="text-2xl font-bold text-center mx-auto">Sign Up</h2>
         </div>
 
         {error && <p className="text-red-500 mb-4">{error}</p>}
@@ -110,7 +119,7 @@ const handleGoogleSignIn = ()=> {
           placeholder="Full Name"
           value={formData.name}
           onChange={handleChange}
-          className="w-full p-3 mb-4 border rounded"
+          className="w-full p-3 mb-4 border rounded focus:outline-none focus:ring-2 focus:ring-purple-400"
         />
 
         <input
@@ -119,7 +128,7 @@ const handleGoogleSignIn = ()=> {
           placeholder="Email"
           value={formData.email}
           onChange={handleChange}
-          className="w-full p-3 mb-4 border rounded"
+          className="w-full p-3 mb-4 border rounded focus:outline-none focus:ring-2 focus:ring-purple-400"
         />
 
         <input
@@ -128,21 +137,25 @@ const handleGoogleSignIn = ()=> {
           placeholder="Password"
           value={formData.password}
           onChange={handleChange}
-          className="w-full p-3 mb-4 border rounded"
+          className="w-full p-3 mb-4 border rounded focus:outline-none focus:ring-2 focus:ring-purple-400"
         />
 
         <button
           type="submit"
-          className="w-full hover:opacity-70 transition-all cursor-pointer p-3 bg-green-500 text-white rounded mb-4"
+          className="w-full p-3 mb-4 bg-green-500 text-white rounded 
+          shadow-md hover:bg-green-600 hover:scale-105 transition-all"
         >
           Sign Up
         </button>
 
-        <button  onClick={() => handleGoogleSignIn()}
+        <button
+          onClick={handleGoogleSignIn}
           type="button"
-          className="w-full hover:opacity-70 transition-all cursor-pointer flex items-center gap-2 justify-center p-3 bg-blue-500 text-white rounded"
+          className="w-full flex items-center gap-2 justify-center p-3 
+          bg-blue-500 text-white rounded shadow-md
+          hover:bg-blue-600 hover:scale-105 transition-all"
         >
-          <GoogleIcon  /> Sign Up with Google
+          <GoogleIcon /> Sign Up with Google
         </button>
       </form>
     </div>

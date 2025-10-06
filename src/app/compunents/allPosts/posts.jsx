@@ -26,11 +26,9 @@ function Posts() {
 
   return (
     <div>
-      <h1 className="text-center py-6 text-2xl font-bold">
-        Here our All products
-      </h1>
+    
 
-      <div className=" mx-auto  grid grid-cols-1  gap-6">
+      <div className=" mx-auto mt-4 grid grid-cols-1  gap-6">
         {posts?.map((p) => (   // plural posts
           <PostStyle product={p} key={p._id} />
         ))}

@@ -70,7 +70,7 @@ function PostCreate() {
 
   return (
     <div className="flex justify-center mt-10">
-      <div className="bg-white w-[32%] rounded-xl shadow-lg border border-gray-200">
+      <div className="bg-white w-[82%] md:w-[30%] rounded-xl shadow-lg border border-gray-200">
         {/* Header */}
         <div className="flex justify-between items-center border-b px-4 py-2">
           <h2 className="text-lg font-semibold">Create post</h2>

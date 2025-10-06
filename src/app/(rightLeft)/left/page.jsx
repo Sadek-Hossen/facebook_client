@@ -3,7 +3,7 @@ import React from 'react'
 
 function Leftpage() {
   return (
-    <div className='hidden md:flex mt-30  overflow-y-auto '>
+    <div className='hidden overflow-y-auto md:flex mt-30  '>
         <LeftCompunent />
     </div>
   )

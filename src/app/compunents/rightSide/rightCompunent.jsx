@@ -1,8 +1,11 @@
 import React from 'react'
+import ShowUser from '../getAllUser/showUser'
 
 function RightCompunent() {
   return (
-    <div>rightCompunent</div>
+    <div className='w-full ml-20  h-[600px] overflow-y-scroll px-7'>
+      <ShowUser />
+    </div>
   )
 }
 

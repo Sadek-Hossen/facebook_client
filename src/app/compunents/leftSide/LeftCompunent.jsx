@@ -1,3 +1,4 @@
+"use client"
 import React from 'react'
 import GroupIcon from '@mui/icons-material/Group';
 import AccessAlarmsIcon from '@mui/icons-material/AccessAlarms';
@@ -6,19 +7,75 @@ import GroupsIcon from '@mui/icons-material/Groups';
 import OndemandVideoIcon from '@mui/icons-material/OndemandVideo';
 import StorefrontIcon from '@mui/icons-material/Storefront';
 import DynamicFeedIcon from '@mui/icons-material/DynamicFeed';
+
 function LeftCompunent() {
   return (
-    <div className='fixed gap-y-3 w-1/3 mx-10 pr-20 py'> 
-      <div className='flex gap-4 w-[100%] hover:bg-gray-300  py-4 px-3 rounded-2xl '> <GroupIcon className='text-blue-500 ' /> <h1>Frinds</h1>  </div>
-      <div className='flex gap-4 w-[100%] hover:bg-gray-300  py-4 px-3 rounded-2xl '> <AccessAlarmsIcon className='text-blue-500' /> <h1>Memurized</h1>  </div>
-      <div className='flex gap-4 w-[100%] hover:bg-gray-300  py-4 px-3 rounded-2xl '> <TurnedInIcon className='text-blue-500' /> <h1>Saved</h1>  </div>
-      <div className='flex gap-4 w-[100%] hover:bg-gray-300  py-4 px-3 rounded-2xl '> <GroupsIcon className='text-blue-500' /> <h1>Group </h1>  </div>
-      <div className='flex gap-4 w-[100%] hover:bg-gray-300  py-4 px-3 rounded-2xl '> <OndemandVideoIcon className='text-blue-500' /> <h1>Reels</h1>  </div>
-      <div className='flex gap-4 w-[100%] hover:bg-gray-300  py-4 px-3 rounded-2xl '> <StorefrontIcon className='text-blue-500' /> <h1>MarketPlace</h1>  </div>
-      <div className='flex gap-4 w-[100%] hover:bg-gray-300  py-4 px-3 rounded-2xl '> <DynamicFeedIcon className='text-blue-500' /> <h1>Feeds</h1>  </div>
-      
-    
-      
+    <div className='fixed h-[400px] pb-6 pl-5 overflow-y-scroll'>
+
+      <div 
+        className="flex gap-5 items-center w-full py-4 px-3 rounded-2xl transition-transform duration-500 ease-in-out transform hover:scale-105 cursor-pointer mb-3"
+        style={{background: 'linear-gradient(90deg, #3b82f6, #8b5cf6, #ec4899)', backgroundSize: '200% 200%', animation: 'gradientShift 3s ease infinite'}}
+      >
+        <GroupIcon className="text-white" />
+        <h1 className="text-white font-semibold text-lg">Friends</h1>
+      </div>
+
+      <div 
+        className="flex gap-5 items-center w-full py-4 px-3 rounded-2xl transition-transform duration-500 ease-in-out transform hover:scale-105 cursor-pointer mb-3"
+        style={{background: 'linear-gradient(90deg, #3b82f6, #8b5cf6, #ec4899)', backgroundSize: '200% 200%', animation: 'gradientShift 3s ease infinite'}}
+      >
+        <AccessAlarmsIcon className="text-white" />
+        <h1 className="text-white font-semibold text-lg">Memorized</h1>
+      </div>
+
+      <div 
+        className="flex gap-5 items-center w-full py-4 px-3 rounded-2xl transition-transform duration-500 ease-in-out transform hover:scale-105 cursor-pointer mb-3"
+        style={{background: 'linear-gradient(90deg, #3b82f6, #8b5cf6, #ec4899)', backgroundSize: '200% 200%', animation: 'gradientShift 3s ease infinite'}}
+      >
+        <TurnedInIcon className="text-white" />
+        <h1 className="text-white font-semibold text-lg">Saved</h1>
+      </div>
+
+      <div 
+        className="flex gap-5 items-center w-full py-4 px-3 rounded-2xl transition-transform duration-500 ease-in-out transform hover:scale-105 cursor-pointer mb-3"
+        style={{background: 'linear-gradient(90deg, #3b82f6, #8b5cf6, #ec4899)', backgroundSize: '200% 200%', animation: 'gradientShift 3s ease infinite'}}
+      >
+        <GroupsIcon className="text-white" />
+        <h1 className="text-white font-semibold text-lg">Group</h1>
+      </div>
+
+      <div 
+        className="flex gap-5 items-center w-full py-4 px-3 rounded-2xl transition-transform duration-500 ease-in-out transform hover:scale-105 cursor-pointer mb-3"
+        style={{background: 'linear-gradient(90deg, #3b82f6, #8b5cf6, #ec4899)', backgroundSize: '200% 200%', animation: 'gradientShift 3s ease infinite'}}
+      >
+        <OndemandVideoIcon className="text-white" />
+        <h1 className="text-white font-semibold text-lg">Reels</h1>
+      </div>
+
+      <div 
+        className="flex gap-5 items-center w-full py-4 px-3 rounded-2xl transition-transform duration-500 ease-in-out transform hover:scale-105 cursor-pointer mb-3"
+        style={{background: 'linear-gradient(90deg, #3b82f6, #8b5cf6, #ec4899)', backgroundSize: '200% 200%', animation: 'gradientShift 3s ease infinite'}}
+      >
+        <StorefrontIcon className="text-white" />
+        <h1 className="text-white font-semibold text-lg">MarketPlace</h1>
+      </div>
+
+      <div 
+        className="flex gap-5 items-center w-full py-4 px-3 rounded-2xl transition-transform duration-500 ease-in-out transform hover:scale-105 cursor-pointer mb-3"
+        style={{background: 'linear-gradient(90deg, #3b82f6, #8b5cf6, #ec4899)', backgroundSize: '200% 200%', animation: 'gradientShift 3s ease infinite'}}
+      >
+        <DynamicFeedIcon className="text-white" />
+        <h1 className="text-white font-semibold text-lg">Feeds</h1>
+      </div>
+
+      <style jsx>{`
+        @keyframes gradientShift {
+          0% { background-position: 0% 50%; }
+          50% { background-position: 100% 50%; }
+          100% { background-position: 0% 50%; }
+        }
+      `}</style>
+
     </div>
   )
 }

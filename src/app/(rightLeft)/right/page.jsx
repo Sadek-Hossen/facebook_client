@@ -3,7 +3,7 @@ import React from 'react'
 
 function RightPage() {
   return (
-    <div className='hidden overflow-y-auto md:flex mt-30  '>
+    <div className='hidden overflow-y-auto md:flex mt-30   '>
         <RightCompunent />
     </div>
   )
